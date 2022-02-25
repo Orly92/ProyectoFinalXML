@@ -1,0 +1,39 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="equipo">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="siglas" use="optional"/>
+					<xs:attribute type="xs:long" name="presupuesto" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nombre_liga" type="xs:string"/>
+	<xs:element name="presidente_liga" type="xs:string"/>
+	<xs:element name="pais_liga" type="xs:string"/>
+	<xs:element name="equipos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="equipo" maxOccurs="unbounded" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="liga">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nombre_liga"/>
+				<xs:element ref="presidente_liga"/>
+				<xs:element ref="pais_liga"/>
+				<xs:element ref="equipos"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Ligas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="liga" maxOccurs="unbounded" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
