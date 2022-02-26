@@ -82,9 +82,7 @@
                   <input type="text" class="form-control" id="InputTextPais" />
                 </div>
                 <div class="mb-3">
-                  <label for="divisionSelect" class="form-label"
-                    >Elige una división</label
-                  >
+                  <label for="divisionSelect" class="form-label">Elige una división</label>
                   <select id="divisionSelect" class="form-select">
                     <option>Primera</option>
                     <option>Segunda</option>
@@ -163,73 +161,6 @@
               </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
-        <script type="text/javascript">
-
-          function showForm () {
-                      var titulo = "Datos del equipo";
-                      $("#modal-titulo").html(titulo);
-                      $("#tabla-modal-equipos").modal('show');
-          }
-
-          function anyadirEquipo() {
-                      var table = $("#tabla-equipos tbody");
-                      table.append("<tr><td>"+ $("#tabla-equipos tr").length+"</td><td>"+
-                        $("#equipo-nombre").val()+"</td>   <td>"+
-                        $("#equipo-siglas").val()+"</td>   <td>"+
-                        $("#equipo-presupuesto").val()+"</td>   <td>"+
-                        $("#equipo-total_jugadores").val()+"</td></tr>");
-          }
-
-          function cerrarModalEquipos() {
-
-                      $('#tabla-modal-equipos').modal('hide');
-          }
-
-
-          function obtenerSiglas() {
-            var items=[];
-
-            //Iterar los valores de la tercera columna
-            $('#tabla-equipos tbody tr td:nth-child(3)').each( function(){
-              //añadir los items al array
-              items.push( $(this).text() );
-            });
-
-            //eliminamos duplicados, si hay
-            var items = $.unique( items );
-
-            var cadena="";
-
-            //iterate unique array and build array of select options
-            $.each( items, function(i, item){
-                cadena+= item + ",";
-            })
-
-            //eliminamos la útlima coma y caracteres en blanco anteriores a esta
-            cadena = cadena.replace(/,\s*$/, "");
-
-            return cadena;
-
-          }
-
-
-          function anyadirLiga() {
-
-                      console.log(obtenerSiglas());
-                      var table = $("#tabla-ligas tbody");
-                      var siglas=obtenerSiglas();
-
-                      table.append("<tr><td>"+ $("#tabla-ligas tr").length+"</td><td>"+
-                        $("#InputTextNombreLiga").val()+"</td>   <td>"+
-                        $("#InputTextPresidente").val()+"</td>   <td>"+
-                        $("#InputTextPais").val()+"</td>   <td>"+
-                        $("#divisionSelect").val()+"</td>   <td>" +
-                        siglas+"</td></tr>");
-          }
-
-      </script>
-
        <div class="tab-content">
         <div id="tabla-ligas" class="container tab-pane active">
           <br />
@@ -254,6 +185,7 @@
 
       <hr class="featurette-divider" />
 
+        <button onclick="convertXMLFromDOM()">Probar</button>
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-end"><a href="#">Ir arriba</a></p>
@@ -264,6 +196,98 @@
       </footer>
     </main>
 
+    <script type="text/javascript">
+
+        function showForm () {
+            var titulo = "Datos del equipo";
+            $("#modal-titulo").html(titulo);
+            $("#tabla-modal-equipos").modal('show');
+        }
+
+        function anyadirEquipo() {
+            var table = $("#tabla-equipos tbody");
+            table.append("<tr><td>"+ $("#tabla-equipos tr").length+"</td><td>"+
+                $("#equipo-nombre").val()+"</td>   <td>"+
+                $("#equipo-siglas").val()+"</td>   <td>"+
+                $("#equipo-presupuesto").val()+"</td>   <td>"+
+                $("#equipo-total_jugadores").val()+"</td></tr>");
+        }
+
+        function cerrarModalEquipos() {
+
+            $('#tabla-modal-equipos').modal('hide');
+        }
+
+
+        function obtenerSiglas() {
+            var items=[];
+
+            //Iterar los valores de la tercera columna
+            $('#tabla-equipos tbody tr td:nth-child(3)').each( function(){
+                //añadir los items al array
+                items.push( $(this).text() );
+            });
+
+            //eliminamos duplicados, si hay
+            var items = $.unique( items );
+
+            var cadena="";
+
+            //iterate unique array and build array of select options
+            $.each( items, function(i, item){
+                cadena+= item + ",";
+            })
+
+            //eliminamos la útlima coma y caracteres en blanco anteriores a esta
+            cadena = cadena.replace(/,\s*$/, "");
+
+            return cadena;
+
+        }
+
+
+        function anyadirLiga() {
+
+            console.log(obtenerSiglas());
+            var table = $("#tabla-ligas tbody");
+            var siglas=obtenerSiglas();
+
+            table.append("<tr name='rowTableLigue'><td>"+ $("#tabla-ligas tr").length+"</td><td>"+
+                $("#InputTextNombreLiga").val()+"</td>   <td>"+
+                $("#InputTextPresidente").val()+"</td>   <td>"+
+                $("#InputTextPais").val()+"</td>   <td>"+
+                $("#divisionSelect").val()+"</td>   <td>" +
+                siglas+"</td></tr>");
+        }
+
+        function convertXMLFromDOM() {
+            let rowLigues = document.getElementsByName("rowTableLigue");
+            console.log(rowLigues);
+            rowLigues.forEach(ligue =>{
+                console.log(ligue);
+                let columns = ligue.children;
+                const name = columns[1].textContent;
+                const president = columns[2].textContent;
+                const country = columns[3].textContent;
+                const teamsSigle = columns[5].textContent; //Division no esta en el xml, revisalo. Si hay que ponerlo entonces hay que
+                //ponerlo en el xml base, xs, xslt, DTD
+                console.log(name,president,country,teamsSigle);
+                let siglesArray = teamsSigle.split(",");
+                if(siglesArray != null){
+                    siglesArray.forEach(sigle=>{
+                        let teamRow = document.getElementById("teamRow-" + sigle);
+                        if(teamRow != null){
+                            let teamName = teamRow[1].textContent;
+                            let teamMoney = teamRow[3].textContent;
+                            let teamPlayer = teamRow[4].textContent;
+                        }
+                    });
+                }
+
+            });
+        }
+
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
