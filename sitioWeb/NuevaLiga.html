@@ -63,23 +63,22 @@
 
     <main>
       <div class="container marketing">
-        <h1 class="text-center">Crea tus propias ligas</h1>
-        <hr class="featurette-divider" />
+        <h1 class="text-center">Crear nueva Liga</h1>
 
           <div class="row">
             <div class="col-sm">
               <form>
                 <div class="mb-3">
-                  <label for="InputText1" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="InputTextNombreLiga" />
+                  <label for="exampleInputText1" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="exampleInputText1" />
                 </div>
                 <div class="mb-3">
-                  <label for="InputText2" class="form-label">Presidente</label>
-                  <input type="text" class="form-control" id="InputTextPresidente" />
+                  <label for="exampleInputText2" class="form-label">Presidente</label>
+                  <input type="text" class="form-control" id="exampleInputText2" />
                 </div>
                 <div class="mb-3">
-                  <label for="InputText3" class="form-label">País</label>
-                  <input type="text" class="form-control" id="InputTextPais" />
+                  <label for="exampleInputText3" class="form-label">País</label>
+                  <input type="text" class="form-control" id="exampleInputText3" />
                 </div>
                 <div class="mb-3">
                   <label for="divisionSelect" class="form-label"
@@ -93,15 +92,17 @@
                   </select>
                 </div>
 
-                <button type="button" onclick="anyadirLiga()" class="btn btn-primary">Crear liga</button>
+                <button type="button" class="btn btn-primary" onClick="showForm()">Añadir equipos</button>
+
+                <button type="submit" class="btn btn-primary">Crear</button>
               </form>
 
             </div>
             <div class="col-sm">
-              <button type="button" style="float: right;" class="btn btn-success" onClick="showForm()">Añadir equipos </button>
               <div class="tab-content">
                 <div id="tabla-equipos" class="container tab-pane active">
                   <br />
+                  <h3>Equipos:</h3>
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -113,7 +114,13 @@
                       </tr>
                     </thead>
                     <tbody>
-
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -126,7 +133,7 @@
         <!-- Tab panes -->
 
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="tabla-modal-equipos">
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal-equipos">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
@@ -137,28 +144,28 @@
                           <tbody>
                               <tr>
                                   <td><strong>Nombre:</strong></td>
-                                  <td><input id="equipo-nombre" type="text" class="form-control" /></td>
+                                  <td><input id="equipos-nombre" type="text" class="form-control" /></td>
                               </tr>
                               <tr>
                                   <td><strong>Siglas:</strong></td>
-                                  <td><input id="equipo-siglas" type="text" class="form-control" /></td>
+                                  <td><input id="equipos-siglas" type="text" class="form-control" /></td>
                               </tr>
                               <tr>
                                   <td><strong>Presupuesto:</strong></td>
-                                  <td><input id="equipo-presupuesto" type="text" class="form-control" /></td>
+                                  <td><input id="equipos-presupuesto" type="text" class="form-control" /></td>
 
                               </tr>
                               <tr>
                                   <td><strong>Total de jugadores:</strong></td>
-                                  <td><input id="equipo-total_jugadores" type="text" class="form-control" /></td>
+                                  <td><input id="equipos-total_jugadores" type="text" class="form-control" /></td>
 
                               </tr>
                           </tbody>
                       </table>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" onclick="anyadirEquipo()" class="btn btn-accept" >Aceptar</button>
-                      <button type="button" onclick="cerrarModalEquipos()" class="btn btn-cancel" data-dismiss="modal">Cerrar</button>
+                      <button type="button" onclick="addItem ()" class="btn btn-accept" >Aceptar</button>
+                      <button type="button" class="btn btn-cancel" data-dismiss="modal">Cerrar</button>
                   </div>
               </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -169,69 +176,21 @@
           function showForm () {
                       var titulo = "Datos del equipo";
                       $("#modal-titulo").html(titulo);
-                      $("#tabla-modal-equipos").modal('show');
+                      $("#modal-equipos").modal('show');
           }
 
-          function anyadirEquipo() {
+          function addItem () {
                       var table = $("#tabla-equipos tbody");
-                      table.append("<tr><td>"+ $("#tabla-equipos tr").length+"</td><td>"+
-                        $("#equipo-nombre").val()+"</td>   <td>"+
-                        $("#equipo-siglas").val()+"</td>   <td>"+
-                        $("#equipo-presupuesto").val()+"</td>   <td>"+
-                        $("#equipo-total_jugadores").val()+"</td></tr>");
-          }
-
-          function cerrarModalEquipos() {
-
-                      $('#tabla-modal-equipos').modal('hide');
-          }
-
-
-          function obtenerSiglas() {
-            var items=[];
-
-            //Iterar los valores de la tercera columna
-            $('#tabla-equipos tbody tr td:nth-child(3)').each( function(){
-              //añadir los items al array
-              items.push( $(this).text() );
-            });
-
-            //eliminamos duplicados, si hay
-            var items = $.unique( items );
-
-            var cadena="";
-
-            //iterate unique array and build array of select options
-            $.each( items, function(i, item){
-                cadena+= item + ",";
-            })
-
-            //eliminamos la útlima coma y caracteres en blanco anteriores a esta
-            cadena = cadena.replace(/,\s*$/, "");
-
-            return cadena;
-
-          }
-
-
-          function anyadirLiga() {
-
-                      console.log(obtenerSiglas());
-                      var table = $("#tabla-ligas tbody");
-                      var siglas=obtenerSiglas();
-
-                      table.append("<tr><td>"+ $("#tabla-ligas tr").length+"</td><td>"+
-                        $("#InputTextNombreLiga").val()+"</td>   <td>"+
-                        $("#InputTextPresidente").val()+"</td>   <td>"+
-                        $("#InputTextPais").val()+"</td>   <td>"+
-                        $("#divisionSelect").val()+"</td>   <td>" +
-                        siglas+"</td></tr>");
+                      table.append("<tr><td>"+ $("#equipos-nombre").val()+"</td><td>"+$("#equipos-siglas").aa+"</td>   <td>"+$("#equipos-nombre").value+"</td></tr>");
+                      $('#modal-equipos').modal('hide');
           }
 
       </script>
 
-       <div class="tab-content">
-        <div id="tabla-ligas" class="container tab-pane active">
+      <!-- /.container -->
+
+      <div class="tab-content">
+        <div id="Ligas" class="container tab-pane active">
           <br />
           <h3>Ligas</h3>
           <table class="table table-striped">
@@ -241,12 +200,17 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Presidente</th>
                 <th scope="col">País</th>
-                <th scope="col">División</th>
                 <th scope="col">Equipos</th>
               </tr>
             </thead>
             <tbody>
-
+              <tr>
+                <th scope="row">1</th>
+                <td>a</td>
+                <td>b</td>
+                <td>c</td>
+                <td>d</td>
+              </tr>
             </tbody>
           </table>
         </div>
