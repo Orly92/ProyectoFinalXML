@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ligas>
+	<liga>
+		<nombre>La liga</nombre>
+		<presidente>Javier Tebas</presidente>
+		<pais>España</pais>
+		<equipos>
+			<equipo siglas="RM" presupuesto="10000000">
+				Real Madrid
+			</equipo>
+			<equipo siglas="FCB" presupuesto="10000">
+				Futbol Club Barcelona
+			</equipo>
+			<equipo siglas="ATM" presupuesto="10000">
+				Atletico
+			</equipo>
+			<equipo siglas="SEV" presupuesto="10000">
+				<nombre>Sevilla</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+			<equipo siglas="VAL" presupuesto="10000">
+				<nombre>Valencia</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+			<equipo siglas="FCB" presupuesto="10000">
+				<nombre>FC Barcelona</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+		</equipos>
+	</liga>
+	<liga>
+		<nombre>Premier Lige</nombre>
+		<presidente>El Orly</presidente>
+		<pais>Inglaterra</pais>
+		<equipos>
+			<equipo siglas="MCT" presupuesto="10000000">
+				<nombre>Manchester City</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+			<equipo siglas="MCU" presupuesto="10000">
+				<nombre>Manchester United</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+			<equipo siglas="LIV" presupuesto="10000">
+				<nombre>Liverpool</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+			<equipo siglas="CHE" presupuesto="10000">
+				<nombre>Chelsea</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+		</equipos>
+	</liga>
+	<liga>
+		<nombre>Ligue 1</nombre>
+		<presidente>Al Kelaify</presidente>
+		<pais>Francia</pais>
+		<equipos>
+			<equipo siglas="PSG" presupuesto="1000000000000">
+				<nombre>Paris Saint Germain</nombre>
+				<total_jugadores>30</total_jugadores>
+			</equipo>
+			<equipo siglas="MON" presupuesto="10000">
+				<nombre>Monaco</nombre>
+				<total_jugadores>24</total_jugadores>
+			</equipo>
+			<equipo siglas="MAR" presupuesto="10000">
+				<nombre>Marsella</nombre>
+				<total_jugadores>24</total_jugadores>
+			</equipo>
+			<equipo siglas="LIO" presupuesto="10000">
+				<nombre>Olympic the Lion</nombre>
+				<total_jugadores>24</total_jugadores>
+			</equipo>
+		</equipos>
+	</liga>
+</ligas>
