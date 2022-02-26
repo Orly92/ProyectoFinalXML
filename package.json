@@ -11,7 +11,8 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "xsd-schema-validator": "^0.7.0"
   },
   "devDependencies": {
     "express-xml-bodyparser": "^0.3.0"
