@@ -1,4 +1,6 @@
-
+.h1{
+  margin-top: 200;
+}
 body {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -18,27 +20,12 @@ body {
     font-size: 3.5rem;
   }
 }
-
-.carousel {
-  margin-bottom: 4rem;
-}
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
-}
-
-.carousel-item {
-  height: 32rem;
-}
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
+.marketing {
+  margin-top: 2.0rem;
 }
 
 .marketing .col-lg-4 {
+  margin-top: 52.0rem;
   margin-bottom: 1.5rem;
   text-align: center;
 }

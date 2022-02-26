@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Steps>
+    <Step rID="T6">
+        <Obj ><![CDATA[Get Data Table - Passed]]></Obj>
+        <Details ><![CDATA[]]></Details>
+        <Time><![CDATA[7/5/2018 - 13:16:26]]></Time>
+        <TimeTick>1530810986</TimeTick>
+        <NodeArgs eType="User" icon="5" nRep="9" >
+            <Disp><![CDATA[Get Data Table - Passed]]></Disp>
+        </NodeArgs>
+    </Step>
+    <Step rID="T7">
+        <Obj ><![CDATA[GetDataTable - Successful]]></Obj>
+        <Details ><![CDATA[Toral Row get:65534]]></Details>
+        <Time><![CDATA[7/5/2018 - 13:16:27]]></Time>
+        <TimeTick>1530810986</TimeTick>
+        <NodeArgs eType="User" icon="5" nRep="10" status="Passed" >
+            <Disp><![CDATA[GetDataTable - Successful]]></Disp>
+        </NodeArgs>
+    </Step>
+</Steps>
