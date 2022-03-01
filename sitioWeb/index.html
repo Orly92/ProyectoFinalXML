@@ -327,7 +327,7 @@
 
       nuevosEquipos = [];
 
-      convertXMLFromDOM();
+
     }
 
     function convertXMLFromDOM() {
@@ -350,12 +350,8 @@
         xmlStr+="<pais>" + country + "</pais>";
 
         xmlStr+="<equipos>";
-        //<equipo siglas="RM" presupuesto="10000000">
-				//<nombre>Real Madrid</nombre>
-				//<total_jugadores>30</total_jugadores>
-			  //</equipo>
 
-        let siglesArray = teamsSigle.split(",");
+          let siglesArray = teamsSigle.split(",");
         if (siglesArray != null) {
           siglesArray.forEach((sigle) => {
             let teamRow = document.getElementById("teamRow-" + sigle);
@@ -375,6 +371,7 @@
         }
         xmlStr += "</equipos></liga>";
       });
+      xmlStr += "</ligas>";
       console.log(xmlStr);
       return xmlStr;
     }
