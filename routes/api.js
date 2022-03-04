@@ -14,10 +14,14 @@ router.post('/check', function(req, res, next) {
                     "valid": null,
                     "messages": [err.message]
                 });
-            else
+            else{
+                result.messages = result.messages.map(msg=>{
+                   return msg.replace("[error] cvc-complex-type.2.4.","");
+                });
                 res.json({
                     ...result
                 });
+            }
         });
     }catch (error) {
         res.statusCode = 500;
