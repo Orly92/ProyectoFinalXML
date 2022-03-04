@@ -65,15 +65,15 @@
         <div class="col-sm">
           <form>
             <div class="mb-3">
-              <label for="InputText1" class="form-label">Nombre</label>
+              <label for="InputTextNombreLiga" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="InputTextNombreLiga" />
             </div>
             <div class="mb-3">
-              <label for="InputText2" class="form-label">Presidente</label>
+              <label for="InputTextPresidente" class="form-label">Presidente</label>
               <input type="text" class="form-control" id="InputTextPresidente" />
             </div>
             <div class="mb-3">
-              <label for="InputText3" class="form-label">País</label>
+              <label for="InputTextPais" class="form-label">País</label>
               <input type="text" class="form-control" id="InputTextPais" />
             </div>
             <div class="mb-3">
@@ -203,7 +203,7 @@
           </thead>
           <tbody></tbody>
         </table>
-        <button class="btn btn-primary" style="float: centre" onclick="convertXMLFromDOM()">
+        <button class="btn btn-primary" onclick="convertXMLFromDOM()">
           Guardar
         </button>
       </div>
@@ -339,7 +339,6 @@
       let rowLigues = document.getElementsByName("rowTableLigue");
 
       rowLigues.forEach((ligue) => {
-        //console.log(ligue);
         xmlStr += "<liga>";
         let columns = ligue.children;
         const name = columns[1].textContent;
@@ -361,13 +360,12 @@
             let teamRow = document.getElementById("teamRow-" + sigle);
             if (teamRow != null) {
               let teamName = teamRow.cells[1].innerText;
-              let teamSigle = teamRow.cells[2].textContent;
               let teamMoney = teamRow.cells[3].textContent;
               let teamPlayer = teamRow.cells[4].textContent;
 
-              xmlStr+="<equipo siglas=\"" + siglesArray + "\" presupuesto=\"" + teamMoney + "\">";
+              xmlStr+="<equipo siglas=\"" + sigle + "\" presupuesto=\"" + teamMoney + "\">";
               xmlStr+="<nombre>" + teamName + "</nombre>";
-              xmlStr+="<total_jugadores>" + teamName + "</total_jugadores>";
+              xmlStr+="<total_jugadores>" + teamPlayer + "</total_jugadores>";
               xmlStr+="</equipo>";
             }
 
