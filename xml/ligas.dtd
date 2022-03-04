@@ -1,0 +1,12 @@
+<!ELEMENT ligas (liga)>
+<!ELEMENT liga (nombre_liga, presidente, division, pais, equipos)>
+<!ELEMENT  nombre_liga (#PCDATA)>
+<!ELEMENT  presidente (#PCDATA)>
+<!ELEMENT  division (#PCDATA)>
+<!ELEMENT  pais (#PCDATA)>
+<!ELEMENT  equipos (equipo+)>
+<!ELEMENT  equipo (siglas, presupuesto, nombre, total_jugadores)>
+<!ATTLIST  equipo siglas CDATA #REQUIRED>
+<!ATTLIST  equipo presupuesto CDATA #REQUIRED>
+<!ELEMENT  nombre (#PCDATA)>
+<!ELEMENT  total_jugadores (#PCDATA)>

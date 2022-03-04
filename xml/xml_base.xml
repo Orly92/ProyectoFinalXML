@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!DOCTYPE ligas SYSTEM "ligas.dtd">
 <ligas>
 	<liga>
-		<nombre>La liga</nombre>
+		<nombre_liga>La liga</nombre_liga>
 		<presidente>Javier Tebas</presidente>
+		<division>1ra</division>
 		<pais>España</pais>
 		<equipos>
 			<equipo siglas="RM" presupuesto="10000000">
@@ -29,8 +31,9 @@
 		</equipos>
 	</liga>
 	<liga>
-		<nombre>Premier League</nombre>
+		<nombre_liga>Premier League</nombre_liga>
 		<presidente>Gary Hoffman</presidente>
+		<division>1ra</division>
 		<pais>Inglaterra</pais>
 		<equipos>
 			<equipo siglas="MCT" presupuesto="10000000">
@@ -52,8 +55,9 @@
 		</equipos>
 	</liga>
 	<liga>
-		<nombre>Ligue 1</nombre>
+		<nombre_liga>Ligue 1</nombre_liga>
 		<presidente>Al Kelaify</presidente>
+		<division>1ra</division>
 		<pais>Francia</pais>
 		<equipos>
 			<equipo siglas="PSG" presupuesto="1000000000000">
