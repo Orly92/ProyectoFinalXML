@@ -203,9 +203,14 @@
           </thead>
           <tbody></tbody>
         </table>
-        <button class="btn btn-primary" onclick="convertXMLFromDOM()">
+        <button class="btn btn-primary" onclick="saveXML()">
           Guardar
         </button>
+        <br>
+        <div class="row" id="result">
+            <a target="_blank" id="resultXML" href="resultados/result.xml" style="display: none">Resultado XML</a>
+            <a target="_blank" id="resultHTML" href="resultados/result.html" style="display: none">Resultado HTML. De convertir el xml mediante XSLT</a>
+        </div>
       </div>
     </div>
 
@@ -334,6 +339,65 @@
 
     }
 
+    function saveXML() {
+      const xml = convertXMLFromDOM();
+      console.log(xml);
+      var xhrCheckReq = new XMLHttpRequest();
+      xhrCheckReq.withCredentials = false;
+
+      var xhrProcessReq = new XMLHttpRequest();
+      xhrProcessReq.withCredentials = false;
+
+      xhrProcessReq.addEventListener("readystatechange",function(){
+        if(this.readyState === 4){
+          if(this.status === 200){
+            const resp = JSON.parse(this.response);
+            if(!resp.success){
+              alert("Ocurrió un error salvando el xml");
+            }else{
+              if(resp.xmlCopied){
+                //Poner vinculo de xml
+                document.getElementById("resultXML").style = "display:block";
+              }
+              if(resp.htmlCopied){
+                //Poner vinculo de html result
+                document.getElementById("resultHTML").style = "display:block";
+              }
+              alert("El xml se procesó correctamente. Los resultados puede verlo debajo del botón Guardar");
+            }
+          }else{
+            alert("Ocurrió un error al procesar el xml");
+          }
+
+        }
+      });
+
+      xhrCheckReq.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+          if(this.status === 200){
+            console.log(this.response);
+            const resp = JSON.parse(this.response);
+            if(!resp.valid){
+              console.log(resp.messages);
+              alert(`Se encontraron los siguientes errores en el xml:\n ${resp.messages.join("\n")}`)
+            }else{
+
+              xhrProcessReq.open("POST", "http://localhost:3000/api/process");
+              xhrProcessReq.setRequestHeader("Content-Type", "application/xml");
+              xhrProcessReq.send(xml);
+            }
+          }else{
+            alert("Ocurrió un error validando");
+          }
+
+        }
+      });
+
+      xhrCheckReq.open("POST", "http://localhost:3000/api/check");
+      xhrCheckReq.setRequestHeader("Content-Type", "application/xml");
+      xhrCheckReq.send(xml);
+    }
+
     function convertXMLFromDOM() {
       var xmlStr = '<?xml version="1.0" encoding="utf-8"?><ligas>';
       let rowLigues = document.getElementsByName("rowTableLigue");
@@ -374,7 +438,6 @@
         xmlStr += "</equipos></liga>";
       });
       xmlStr += "</ligas>";
-      console.log(xmlStr);
       return xmlStr;
     }
   </script>
