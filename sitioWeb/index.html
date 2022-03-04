@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ligas de fútbol</title>
 
-    <link
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ligas de fútbol</title>
+<link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
@@ -13,288 +13,377 @@
     />
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
+  </style>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+  <!-- Custom styles for this page -->
+  <link href="custom.css" rel="stylesheet" />
+</head>
 
-    <!-- Custom styles for this page -->
-    <link href="custom.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Ligas</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <a class="nav-link" href="NuevaLiga.html">Crear Liga</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="acercade.html">Acerca de</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <div class="container marketing">
-        <h1 class="text-center">Crea tus propias ligas</h1>
-        <hr class="featurette-divider" />
-
-          <div class="row">
-            <div class="col-sm">
-              <form>
-                <div class="mb-3">
-                  <label for="InputText1" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="InputTextNombreLiga" />
-                </div>
-                <div class="mb-3">
-                  <label for="InputText2" class="form-label">Presidente</label>
-                  <input type="text" class="form-control" id="InputTextPresidente" />
-                </div>
-                <div class="mb-3">
-                  <label for="InputText3" class="form-label">País</label>
-                  <input type="text" class="form-control" id="InputTextPais" />
-                </div>
-                <div class="mb-3">
-                  <label for="divisionSelect" class="form-label">Elige una división</label>
-                  <select id="divisionSelect" class="form-select">
-                    <option>Primera</option>
-                    <option>Segunda</option>
-                    <option>Tercera</option>
-                    <option>Cuarta</option>
-                  </select>
-                </div>
-
-                <button type="button" onclick="anyadirLiga()" class="btn btn-primary">Crear liga</button>
-              </form>
-
-            </div>
-            <div class="col-sm">
-              <button type="button" style="float: right;" class="btn btn-success" onClick="showForm()">Añadir equipos </button>
-              <div class="tab-content">
-                <div id="tabla-equipos" class="container tab-pane active">
-                  <br />
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Siglas</th>
-                        <th scope="col">Presupuesto</th>
-                        <th scope="col">Total de jugadores</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Tab panes -->
-
-
-        <div class="modal fade" tabindex="-1" role="dialog" id="tabla-modal-equipos">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h4 class="modal-title" id="modal-titulo"></h4>
-                  </div>
-                  <div class="modal-body" id="modal-contenido">
-                      <table class="table table-bordered">
-                          <tbody>
-                              <tr>
-                                  <td><strong>Nombre:</strong></td>
-                                  <td><input id="equipo-nombre" type="text" class="form-control" /></td>
-                              </tr>
-                              <tr>
-                                  <td><strong>Siglas:</strong></td>
-                                  <td><input id="equipo-siglas" type="text" class="form-control" /></td>
-                              </tr>
-                              <tr>
-                                  <td><strong>Presupuesto:</strong></td>
-                                  <td><input id="equipo-presupuesto" type="text" class="form-control" /></td>
-
-                              </tr>
-                              <tr>
-                                  <td><strong>Total de jugadores:</strong></td>
-                                  <td><input id="equipo-total_jugadores" type="text" class="form-control" /></td>
-
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" onclick="anyadirEquipo()" class="btn btn-accept" >Aceptar</button>
-                      <button type="button" onclick="cerrarModalEquipos()" class="btn btn-cancel" data-dismiss="modal">Cerrar</button>
-                  </div>
-              </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-       <div class="tab-content">
-        <div id="tabla-ligas" class="container tab-pane active">
-          <br />
-          <h3>Ligas</h3>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Presidente</th>
-                <th scope="col">País</th>
-                <th scope="col">División</th>
-                <th scope="col">Equipos</th>
-              </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-          </table>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Ligas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="NuevaLiga.html">Crear Liga</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="acercade.html">Acerca de</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+  </header>
 
+  <main>
+    <div class="container marketing">
+      <h1 class="text-center">Crea tus propias ligas</h1>
       <hr class="featurette-divider" />
 
-        <button onclick="convertXMLFromDOM()">Probar</button>
-      <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-end"><a href="#">Ir arriba</a></p>
-        <p>
-          &copy; 2022 Universidad de Alicante. &middot;
-          <a href="acercade.html">Acerca de</a>
-        </p>
-      </footer>
-    </main>
+      <div class="row">
+        <div class="col-sm">
+          <form>
+            <div class="mb-3">
+              <label for="InputText1" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="InputTextNombreLiga" />
+            </div>
+            <div class="mb-3">
+              <label for="InputText2" class="form-label">Presidente</label>
+              <input type="text" class="form-control" id="InputTextPresidente" />
+            </div>
+            <div class="mb-3">
+              <label for="InputText3" class="form-label">País</label>
+              <input type="text" class="form-control" id="InputTextPais" />
+            </div>
+            <div class="mb-3">
+              <label for="divisionSelect" class="form-label">Elige una división</label>
+              <select id="divisionSelect" class="form-select">
+                <option>Primera</option>
+                <option>Segunda</option>
+                <option>Tercera</option>
+                <option>Cuarta</option>
+              </select>
+            </div>
 
-    <script type="text/javascript">
+            <button type="button" onclick="anyadirLiga()" class="btn btn-light">
+              Crear liga
+            </button>
+          </form>
+        </div>
+        <div class="col-sm">
+          <button type="button" style="float: right" class="btn btn-light" onClick="showForm()">
+            Añadir equipos
+          </button>
+          <div class="tab-content">
+            <div id="tabla-equipos" class="container tab-pane active">
+              <br />
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Siglas</th>
+                    <th scope="col">Presupuesto</th>
+                    <th scope="col">Total de jugadores</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        function showForm () {
-            var titulo = "Datos del equipo";
-            $("#modal-titulo").html(titulo);
-            $("#tabla-modal-equipos").modal('show');
+    <!-- Tab panes -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="tabla-modal-equipos">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-titulo"></h4>
+          </div>
+          <div class="modal-body" id="modal-contenido">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td><strong>Nombre:</strong></td>
+                  <td>
+                    <input id="equipo-nombre" type="text" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Siglas:</strong></td>
+                  <td>
+                    <input id="equipo-siglas" type="text" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Presupuesto:</strong></td>
+                  <td>
+                    <input id="equipo-presupuesto" type="text" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Total de jugadores:</strong></td>
+                  <td>
+                    <input id="equipo-total_jugadores" type="text" class="form-control" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" onclick="anyadirEquipo()" class="btn btn-accept">
+              Aceptar
+            </button>
+            <button type="button" onclick="cerrarModalEquipos()" class="btn btn-cancel" data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="tab-content">
+      <div id="tabla-ligas" class="container tab-pane active">
+        <br />
+        <h3>Ligas</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Presidente</th>
+              <th scope="col">País</th>
+              <th scope="col">División</th>
+              <th scope="col">Equipos</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <br />
+
+      <div id="tabla-totalEquipos" class="container tab-pane active">
+        <h3>Equipos</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Siglas</th>
+              <th scope="col">Presupuesto</th>
+              <th scope="col">Total de jugadores</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button class="btn btn-primary" style="float: centre" onclick="convertXMLFromDOM()">
+          Guardar
+        </button>
+      </div>
+    </div>
+
+    <hr class="featurette-divider" />
+
+    <!-- FOOTER -->
+    <footer class="container">
+      <p class="float-end"><a href="#">Ir arriba</a></p>
+      <p>
+        &copy; 2022 Universidad de Alicante. &middot;
+        <a href="acercade.html">Acerca de</a>
+      </p>
+    </footer>
+  </main>
+
+  <script type="text/javascript">
+    function showForm() {
+      var titulo = "Datos del equipo";
+      $("#modal-titulo").html(titulo);
+      $("#tabla-modal-equipos").modal("show");
+    }
+
+    var nuevosEquipos = [];
+
+    function anyadirEquipo() {
+      var table = $("#tabla-equipos tbody");
+      table.append(
+        "<tr><td>" +
+        $("#tabla-equipos tr").length +
+        "</td><td>" +
+        $("#equipo-nombre").val() +
+        "</td>   <td>" +
+        $("#equipo-siglas").val() +
+        "</td>   <td>" +
+        $("#equipo-presupuesto").val() +
+        "</td>   <td>" +
+        $("#equipo-total_jugadores").val() +
+        "</td></tr>"
+      );
+
+      nuevosEquipos.push({
+        nombre: $("#equipo-nombre").val(),
+        siglas: $("#equipo-siglas").val(),
+        presupuesto: $("#equipo-presupuesto").val(),
+        total_jugadores: $("#equipo-total_jugadores").val(),
+      });
+    }
+
+    function cerrarModalEquipos() {
+      $("#tabla-modal-equipos").modal("hide");
+    }
+
+    function obtenerSiglas() {
+      var items = [];
+
+      //Iterar los valores de la tercera columna
+      $("#tabla-equipos tbody tr td:nth-child(3)").each(function () {
+        //añadir los items al array
+        items.push($(this).text());
+      });
+
+      //eliminamos duplicados, si hay
+      var items = $.unique(items);
+
+      var cadena = "";
+
+      //iterate unique array and build array of select options
+      $.each(items, function (i, item) {
+        cadena += item + ",";
+      });
+
+      //eliminamos la útlima coma y caracteres en blanco anteriores a esta
+      cadena = cadena.replace(/,\s*$/, "");
+
+      return cadena;
+    }
+
+    function anyadirLiga() {
+
+      var table = $("#tabla-ligas tbody");
+      var siglas = obtenerSiglas();
+
+      table.append(
+        "<tr name='rowTableLigue'><td>" +
+        $("#tabla-ligas tr").length +
+        "</td><td>" +
+        $("#InputTextNombreLiga").val() +
+        "</td>   <td>" +
+        $("#InputTextPresidente").val() +
+        "</td>   <td>" +
+        $("#InputTextPais").val() +
+        "</td>   <td>" +
+        $("#divisionSelect").val() +
+        "</td>   <td>" +
+        siglas +
+        "</td></tr>"
+      );
+
+      //limpiar la tabla de equipos q está arriba a la derecha
+      anyadirTablaEquipo();
+    }
+
+    function anyadirTablaEquipo() {
+      var table = $("#tabla-totalEquipos tbody");
+      nuevosEquipos.forEach((equipo) => {
+        table.append(
+          "<tr id='teamRow-" + equipo.siglas + "'><td>" +
+          $("#tabla-totalEquipos tr").length +
+          "</td><td>" +
+          equipo.nombre +
+          "</td>   <td>" +
+          equipo.siglas +
+          "</td>   <td>" +
+          equipo.presupuesto +
+          "</td>   <td>" +
+          equipo.total_jugadores +
+          "</td>   <td>" +
+          "</td></tr>"
+        );
+      });
+
+      $("#tabla-equipos").find("tr:not(:first)").remove();
+
+      nuevosEquipos = [];
+
+
+    }
+
+    function convertXMLFromDOM() {
+      var xmlStr = '<?xml version="1.0" encoding="utf-8"?><ligas>';
+      let rowLigues = document.getElementsByName("rowTableLigue");
+
+      rowLigues.forEach((ligue) => {
+        //console.log(ligue);
+        xmlStr += "<liga>";
+        let columns = ligue.children;
+        const name = columns[1].textContent;
+        const president = columns[2].textContent;
+        const country = columns[3].textContent;
+        const division = columns[4].textContent;
+        const teamsSigle = columns[5].textContent;
+
+        xmlStr+="<nombre>" + name + "</nombre>";
+        xmlStr+="<presidente>" + president + "</presidente>";
+        xmlStr+="<division>" + division + "</division>";
+        xmlStr+="<pais>" + country + "</pais>";
+
+        xmlStr+="<equipos>";
+
+          let siglesArray = teamsSigle.split(",");
+        if (siglesArray != null) {
+          siglesArray.forEach((sigle) => {
+            let teamRow = document.getElementById("teamRow-" + sigle);
+            if (teamRow != null) {
+              let teamName = teamRow.cells[1].innerText;
+              let teamSigle = teamRow.cells[2].textContent;
+              let teamMoney = teamRow.cells[3].textContent;
+              let teamPlayer = teamRow.cells[4].textContent;
+
+              xmlStr+="<equipo siglas=\"" + siglesArray + "\" presupuesto=\"" + teamMoney + "\">";
+              xmlStr+="<nombre>" + teamName + "</nombre>";
+              xmlStr+="<total_jugadores>" + teamName + "</total_jugadores>";
+              xmlStr+="</equipo>";
+            }
+
+          });
         }
+        xmlStr += "</equipos></liga>";
+      });
+      xmlStr += "</ligas>";
+      console.log(xmlStr);
+      return xmlStr;
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</body>
 
-        function anyadirEquipo() {
-            var table = $("#tabla-equipos tbody");
-            table.append("<tr><td>"+ $("#tabla-equipos tr").length+"</td><td>"+
-                $("#equipo-nombre").val()+"</td>   <td>"+
-                $("#equipo-siglas").val()+"</td>   <td>"+
-                $("#equipo-presupuesto").val()+"</td>   <td>"+
-                $("#equipo-total_jugadores").val()+"</td></tr>");
-        }
-
-        function cerrarModalEquipos() {
-
-            $('#tabla-modal-equipos').modal('hide');
-        }
-
-
-        function obtenerSiglas() {
-            var items=[];
-
-            //Iterar los valores de la tercera columna
-            $('#tabla-equipos tbody tr td:nth-child(3)').each( function(){
-                //añadir los items al array
-                items.push( $(this).text() );
-            });
-
-            //eliminamos duplicados, si hay
-            var items = $.unique( items );
-
-            var cadena="";
-
-            //iterate unique array and build array of select options
-            $.each( items, function(i, item){
-                cadena+= item + ",";
-            })
-
-            //eliminamos la útlima coma y caracteres en blanco anteriores a esta
-            cadena = cadena.replace(/,\s*$/, "");
-
-            return cadena;
-
-        }
-
-
-        function anyadirLiga() {
-
-            console.log(obtenerSiglas());
-            var table = $("#tabla-ligas tbody");
-            var siglas=obtenerSiglas();
-
-            table.append("<tr name='rowTableLigue'><td>"+ $("#tabla-ligas tr").length+"</td><td>"+
-                $("#InputTextNombreLiga").val()+"</td>   <td>"+
-                $("#InputTextPresidente").val()+"</td>   <td>"+
-                $("#InputTextPais").val()+"</td>   <td>"+
-                $("#divisionSelect").val()+"</td>   <td>" +
-                siglas+"</td></tr>");
-        }
-
-        function convertXMLFromDOM() {
-            let rowLigues = document.getElementsByName("rowTableLigue");
-            console.log(rowLigues);
-            rowLigues.forEach(ligue =>{
-                console.log(ligue);
-                let columns = ligue.children;
-                const name = columns[1].textContent;
-                const president = columns[2].textContent;
-                const country = columns[3].textContent;
-                const teamsSigle = columns[5].textContent; //Division no esta en el xml, revisalo. Si hay que ponerlo entonces hay que
-                //ponerlo en el xml base, xs, xslt, DTD
-                console.log(name,president,country,teamsSigle);
-                let siglesArray = teamsSigle.split(",");
-                if(siglesArray != null){
-                    siglesArray.forEach(sigle=>{
-                        let teamRow = document.getElementById("teamRow-" + sigle);
-                        if(teamRow != null){
-                            let teamName = teamRow[1].textContent;
-                            let teamMoney = teamRow[3].textContent;
-                            let teamPlayer = teamRow[4].textContent;
-                        }
-                    });
-                }
-
-            });
-        }
-
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-  </body>
 </html>
