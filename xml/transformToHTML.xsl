@@ -19,6 +19,7 @@
                                 <th scope="col">Presidente</th>
                                 <th scope="col">Pais</th>
                                 <th scope="col">Equipos</th>
+                                 <th scope="col">División</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +56,9 @@
             <th><xsl:value-of select="nombre" /></th>
             <td><xsl:value-of select="presidente" /></td>
             <td><xsl:value-of select="pais"/></td>
+            <td><xsl:value-of select="division" /></td>
             <td><strong class="text-dark"><xsl:apply-templates select="equipos/equipo" mode="siglas"/></strong></td>
+             
         </tr>
     </xsl:template>
 

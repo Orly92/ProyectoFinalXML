@@ -5,6 +5,7 @@
 		<nombre>La liga</nombre>
 		<presidente>Javier Tebas</presidente>
 		<pais>España</pais>
+		
 		<equipos>
 			<equipo siglas="RM" presupuesto="10000000">
 				Real Madrid

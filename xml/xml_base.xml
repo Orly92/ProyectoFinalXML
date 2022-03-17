@@ -5,7 +5,7 @@
 	<liga>
 		<nombre_liga>La liga</nombre_liga>
 		<presidente>Javier Tebas</presidente>
-		<division>1ra</division>
+		<division>Primera</division>
 		<pais>España</pais>
 		<equipos>
 			<equipo siglas="RM" presupuesto="10000000">
@@ -33,7 +33,7 @@
 	<liga>
 		<nombre_liga>Premier League</nombre_liga>
 		<presidente>Gary Hoffman</presidente>
-		<division>1ra</division>
+		<division>Primera</division>
 		<pais>Inglaterra</pais>
 		<equipos>
 			<equipo siglas="MCT" presupuesto="10000000">
