@@ -11,8 +11,8 @@
 	</xs:element>
 	<xs:element name="nombre_liga" type="xs:string"/>
 	<xs:element name="presidente" type="xs:string"/>
-	<xs:element name="division" type="xs:string"/>
 	<xs:element name="pais" type="xs:string"/>
+	<xs:element name="division" type="xs:string"/>
 	<xs:element name="equipos">
 		<xs:complexType>
 			<xs:sequence>
@@ -25,8 +25,8 @@
 			<xs:sequence>
 				<xs:element ref="nombre_liga" maxOccurs="1" minOccurs="1"/>
 				<xs:element ref="presidente" maxOccurs="1" minOccurs="0"/>
-				<xs:element ref="division" maxOccurs="1" minOccurs="1"/>
 				<xs:element ref="pais" maxOccurs="1" minOccurs="1"/>
+				<xs:element ref="division" maxOccurs="1" minOccurs="1"/>
 				<xs:element ref="equipos" maxOccurs="1" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>

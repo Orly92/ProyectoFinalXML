@@ -2,8 +2,8 @@
 <!ELEMENT liga (nombre_liga, presidente, division, pais, equipos)>
 <!ELEMENT  nombre_liga (#PCDATA)>
 <!ELEMENT  presidente (#PCDATA)>
-<!ELEMENT  division (#PCDATA)>
 <!ELEMENT  pais (#PCDATA)>
+<!ELEMENT  division ("Primera"|"Segunda"|"Tercera"|"Cuarta")>
 <!ELEMENT  equipos (equipo+)>
 <!ELEMENT  equipo (siglas, presupuesto, nombre, total_jugadores)>
 <!ATTLIST  equipo siglas CDATA #REQUIRED>
