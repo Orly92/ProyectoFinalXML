@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:template match="/">
         <html lang="en">
             <head>
+                <meta charset="UTF-8"/>
                 <title>XML creado</title>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
                 <link href="custom.css" rel="stylesheet"/>
@@ -17,7 +18,7 @@
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Presidente</th>
-                                <th scope="col">Pais</th>
+                                <th scope="col">País</th>
                                 <th scope="col">Equipos</th>
                                  <th scope="col">División</th>
                             </tr>
@@ -53,10 +54,10 @@
 
     <xsl:template match="liga">
         <tr>
-            <th><xsl:value-of select="nombre" /></th>
+            <th><xsl:value-of select="nombre_liga" /></th>
             <td><xsl:value-of select="presidente" /></td>
             <td><xsl:value-of select="pais"/></td>
-            <td><xsl:value-of select="division" /></td>
+            <td><xsl:value-of select="@division" /></td>
             <td><strong class="text-dark"><xsl:apply-templates select="equipos/equipo" mode="siglas"/></strong></td>
              
         </tr>

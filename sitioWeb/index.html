@@ -403,7 +403,6 @@
       let rowLigues = document.getElementsByName("rowTableLigue");
 
       rowLigues.forEach((ligue) => {
-        xmlStr += "<liga>";
         let columns = ligue.children;
         const name = columns[1].textContent;
         const president = columns[2].textContent;
@@ -411,9 +410,10 @@
         const division = columns[4].textContent;
         const teamsSigle = columns[5].textContent;
 
-        xmlStr+="<nombre>" + name + "</nombre>";
+        xmlStr += "<liga division=\"" + division + "\">";
+
+        xmlStr+="<nombre_liga>" + name + "</nombre_liga>";
         xmlStr+="<presidente>" + president + "</presidente>";
-        xmlStr+="<division>" + division + "</division>";
         xmlStr+="<pais>" + country + "</pais>";
 
         xmlStr+="<equipos>";
